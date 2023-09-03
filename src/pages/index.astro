@@ -1,4 +1,8 @@
 ---
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Hamburger from "../components/Hamburger.astro"
 ---
 
 <html lang="en">
@@ -10,6 +14,14 @@
 		<title>Ruknology Blog</title>
 	</head>
 	<body>
-		<h1>Ruknology Blog</h1>
+		<Hamburger />	
+		<Navigation />
+
+		<h1>Ruknology Blog Home</h1>
+
+		<Footer />
+		<script>
+			import "../scripts/menu.js";
+		</script>
 	</body>
 </html>
