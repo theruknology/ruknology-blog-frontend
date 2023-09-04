@@ -1,0 +1,14 @@
+// my-blog/frontend/src/pages/post/[slug].astro
+---
+export function getStaticPaths() {
+  return [
+    {params: {slug: 'hello-world'}},
+    {params: {slug: 'my-favorite-things'}},
+    {params: {slug: 'summertime'}},
+  ];
+}
+
+const { slug } = Astro.params;
+---
+
+<h1>A post about {slug}</h1>
