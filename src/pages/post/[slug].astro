@@ -1,14 +1,20 @@
-// my-blog/frontend/src/pages/post/[slug].astro
 ---
-export function getStaticPaths() {
-  return [
-    {params: {slug: 'hello-world'}},
-    {params: {slug: 'my-favorite-things'}},
-    {params: {slug: 'summertime'}},
-  ];
+import { useSanityClient } from "@sanity/astro";
+
+export async function getStaticPaths() {
+  const posts = await useSanityClient().fetch(`*[_type == "post"]`);
+
+  return posts.map(({ slug, title }) => {
+    return {
+      params: { slug: slug.current },
+      props: { title },
+    };
+  });
 }
 
-const { slug } = Astro.params;
+const { slug  } = Astro.params;
+const { title } = Astro.props;
+
 ---
 
-<h1>A post about {slug}</h1>
+<h1>{title}</h1>
